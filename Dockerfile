@@ -10,7 +10,7 @@ COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
 
-# Set a buil argument Dev to false by default and DEV can be manually set in docker-compose.yaml (if you want to run DEV environbment)
+# Set a build argument Dev to false by default and DEV can be manually set in docker-compose.yaml (if you want to run DEV environbment)
 ARG DEV=false
 # 1.venv: create a python virtual environment (to make sure that any dependencies in the base image wouldn't conflict with our project)
 # 2. upgrade pip
@@ -20,7 +20,7 @@ ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
-    if [ $DEV = "TRUE" ]; \
+    if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt; \
     fi && \
     rm -rf /tmp && \
